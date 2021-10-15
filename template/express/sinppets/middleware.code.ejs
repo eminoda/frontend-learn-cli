@@ -1,0 +1,16 @@
+const logger = require('../lib/logger')('middleware:<%= filename %>');
+/**
+ * <%= filename %> 中间件
+ *
+ * @param {object} options 中间件参数
+ */
+module.exports = (options = {}) => {
+  return async (req, res, next) => {
+    try {
+      await next()
+    } catch (err) {
+      logger.error(err)
+      return next(err)
+    }
+  }
+}

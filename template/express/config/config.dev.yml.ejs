@@ -1,0 +1,19 @@
+app_name: <%= appName %>
+port: 3000
+env: dev
+logger_config:
+  path: /u01/applications/log
+  level: debug
+<% if (mysql) { -%>
+mysql:
+  database: <%= mysql.database %>
+  username: <%= mysql.username %>
+  password: <%= mysql.password %>
+  host: <%= mysql.host %>
+  port: <%= mysql.port %>
+<% } -%>
+<% if (redis) { -%>
+redis:
+  host: <%= redis.host %>
+  port: <%= redis.port %>
+<% } -%>

@@ -1,0 +1,8 @@
+const Router = require('express').Router()
+const { API_CODE } = require('../lib/enums')
+
+Router.get('/', (req, res, next) => {
+  return res.status(200).json({ msg: 'ok', code: API_CODE.SUCCESS })
+})
+
+module.exports = Router

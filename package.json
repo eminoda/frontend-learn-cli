@@ -1,0 +1,32 @@
+{
+  "name": "frontend-learn-cli",
+  "version": "1.0.0",
+  "description": "前端相关学习及实践-脚手架",
+  "main": "index.js",
+  "bin": {
+    "frontend-learn-cli": "fl-cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eminoda/frontend-learn-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "commander"
+  ],
+  "author": "eminoda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eminoda/frontend-learn-cli/issues"
+  },
+  "homepage": "https://github.com/eminoda/frontend-learn-cli#readme",
+  "dependencies": {
+    "commander": "^8.1.0",
+    "ejs": "^3.1.6",
+    "fs-extra": "^10.0.0",
+    "inquirer": "^8.1.2"
+  }
+}

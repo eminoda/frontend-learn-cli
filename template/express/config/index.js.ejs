@@ -1,0 +1,7 @@
+const yaml = require('yaml')
+const path = require('path')
+const fs = require('fs')
+let config_file = `./config.${process.env.NODE_ENV || 'dev'}.yml`
+let fp = path.resolve(__dirname, config_file)
+let config = yaml.parse(fs.readFileSync(fp, 'utf-8'))
+module.exports = config

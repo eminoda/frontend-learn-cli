@@ -1,0 +1,15 @@
+const axios = require("axios");
+
+module.exports = (options = {}) => {
+  return axios.create(
+    Object.assign(
+      {
+        timeout: 60 * 1000,
+        headers: {
+          "content-type": "application/json",
+        },
+      },
+      options
+    )
+  );
+};
