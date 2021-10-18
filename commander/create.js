@@ -55,6 +55,7 @@ module.exports = function createCommand() {
             { dirtory: 'routes', fileName: 'health.js', answers },
             { dirtory: 'util', fileName: 'index.js', answers },
             { fileName: 'app.js', answers },
+            { fileName: 'package.json', answers },
           ]);
         } catch (err) {
           console.log(chalk.red(err.message));
@@ -80,7 +81,6 @@ function _writeFiles(options) {
 }
 
 function _writeFile({ dirtory = '', fileName, answers }) {
-  console.log(answers)
   // 模板路径
   const templateDir = join(__dirname, '../template', answers.template);
   if (!fs.pathExistsSync(templateDir)) {
