@@ -6,11 +6,11 @@ const healthRouter = require('./routes/health');
 
 const app = express();
 
-<% if (express.middleware['express.json']) { -%>
+<% if (express.middlewares.includes('json')) { -%>
 app.use(express.json())
 <% } -%>
-<% if (express.middleware['express.urlencoded']) { -%>
-app.use(express.json())
+<% if (express.middlewares.includes('urlencoded')) { -%>
+app.use(express.urlencoded())
 <% } -%>
 
 app.use('/health', healthRouter);

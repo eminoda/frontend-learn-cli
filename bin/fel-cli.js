@@ -3,9 +3,8 @@ const pkg = require('../package');
 const program = require('commander');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
-const cliName = 'fl';
 const createCommand = require('../commander/create');
-const { outputHelp, enhanceErrorMessages } = require('../util');
+const { outputHelp, enhanceErrorMessages, cliName } = require('../util');
 
 enhanceErrorMessages();
 

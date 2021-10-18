@@ -8,7 +8,11 @@ function mkdir(dir) {
 }
 
 function join(...args) {
-  return path.join(...args);
+  try {
+    return path.join(...args);
+  } catch (err) {
+    throw new Error(`${err.message}\n\t路径错误：${args.join()}`);
+  }
 }
 
 module.exports = { mkdir, join };

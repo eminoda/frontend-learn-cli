@@ -25,11 +25,11 @@ const defaultQuestions = [
 const expressQuestions = [
   {
     type: 'checkbox',
-    name: 'express.middleware',
+    name: 'express.middlewares',
     message: '请选择中间件',
     choices: [
-      { name: 'express.json', checked: true },
-      { name: 'express.urlencoded', checked: false },
+      { name: 'json', checked: true },
+      { name: 'urlencoded', checked: false },
     ],
     when(answers) {
       return answers.template == 'express';
@@ -38,6 +38,7 @@ const expressQuestions = [
 ];
 
 const questions = [...defaultQuestions, ...expressQuestions];
+let projectDir;
 module.exports = function createCommand() {
   program
     .command('create')
@@ -48,9 +49,13 @@ module.exports = function createCommand() {
       inquirer.prompt(questions).then(async (answers) => {
         try {
           // 创建目录
-          const projectDir = mkdirProjectDir(answers.appName, options.f);
-
-          writeFile({ projectDir, dirtory: 'bin', fileName: 'www', answers });
+          _mkdirProjectDir(answers.appName, options.f);
+          _writeFiles([
+            { dirtory: 'bin', fileName: 'www', answers },
+            { dirtory: 'routes', fileName: 'health.js', answers },
+            { dirtory: 'util', fileName: 'index.js', answers },
+            { fileName: 'app.js', answers },
+          ]);
         } catch (err) {
           console.log(chalk.red(err.message));
         }
@@ -58,17 +63,25 @@ module.exports = function createCommand() {
     });
 };
 
-function mkdirProjectDir(appName, f) {
-  const projectDir = join(rootDir, appName);
+function _mkdirProjectDir(appName, f) {
+  projectDir = join(rootDir, appName);
   if (fs.pathExistsSync(projectDir) && !f) {
     throw new Error(`已存在 ${projectDir} 路径，创建失败`);
   } else {
     mkdir(projectDir);
   }
-  return projectDir;
 }
 
-function writeFile({ projectDir, dirtory, fileName, answers }) {
+function _writeFiles(options) {
+  for (let i = 0; i < options.length; i++) {
+    const { dirtory, fileName, answers } = options[i];
+    _writeFile({ dirtory, fileName, answers });
+  }
+}
+
+function _writeFile({ dirtory = '', fileName, answers }) {
+  console.log(answers)
+  // 模板路径
   const templateDir = join(__dirname, '../template', answers.template);
   if (!fs.pathExistsSync(templateDir)) {
     throw new Error(`模板路径 ${templateDir} 不存在`);

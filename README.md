@@ -4,9 +4,8 @@
 
 # quickstart
 
+创建项目模板
+
 ```shell
-fl create
-
-# 选择框架
-
+fel create
 ```
