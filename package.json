@@ -4,7 +4,7 @@
   "description": "前端相关学习及实践-脚手架",
   "main": "index.js",
   "bin": {
-    "frontend-learn-cli": "fel-cli.js"
+    "frontend-learn-cli": "bin/fel-cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
