@@ -4,6 +4,9 @@ const healthRouter = require('./routes/health');
 
 const app = express();
 
+<% if (express.middlewares.includes('static')) { -%>
+app.use(express.static('public'))
+<% } -%>
 <% if (express.middlewares.includes('json')) { -%>
 app.use(express.json())
 <% } -%>

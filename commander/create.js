@@ -29,6 +29,7 @@ const expressQuestions = [
     message: '请选择中间件',
     choices: [
       { name: 'json', checked: true },
+      { name: 'static', checked: false },
       { name: 'urlencoded', checked: false },
     ],
     when(answers) {
